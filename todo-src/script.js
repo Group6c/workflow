@@ -5,6 +5,7 @@ var myApp = angular.module('app', []);
 myApp.controller('MainCtrl', function ($scope){
   $scope.todos = ["Learn Angular", "Learn node"];
   $scope.newItem = "";
+  //$scope.editBar = "":
   
   $scope.addItem = function(){
     console.log("in add");
@@ -18,6 +19,20 @@ myApp.controller('MainCtrl', function ($scope){
     console.log("in delete");
     var index = $scope.todos.indexOf(item);
     $scope.todos.splice(index, 1);
+  }
+
+  $scope.editItem = function(item){
+    console.log("in edit");
+    //if($scope.editBar !== ""){
+    var index = $scope.todos.indexOf(item);
+    console.log("index " + index);
+    var text = document.getElementById("editInput" + index).value;
+    console.log(text);
+    $scope.todos[index] = text;
+  //   $scope.todos[index] = $scope.editBar;
+  //   $scope.editBar = "";
+  // }
+
   }
     
   

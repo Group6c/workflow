@@ -3,18 +3,17 @@
 var myApp = angular.module('app', []);
 
 myApp.controller('MainCtrl', function ($scope){
-  $scope.todos = ["Learn Angular", "Learn node"];
+  $scope.todos = [{name: "Learn Angular", isChecked: false }, {name: "Learn node", isChecked: false }];
   $scope.newItem = "";
-  //$scope.editBar = "":
-  
+
   $scope.addItem = function(){
     console.log("in add");
     if ($scope.newItem !== ""){
-      $scope.todos.push($scope.newItem);
+      $scope.todos.push({name: $scope.newItem, isChecked: false });
       $scope.newItem = "";
     }
   }
-    
+
   $scope.deleteItem = function(item){
     console.log("in delete");
     var index = $scope.todos.indexOf(item);
@@ -28,7 +27,8 @@ myApp.controller('MainCtrl', function ($scope){
     console.log("index " + index);
     var text = document.getElementById("editInput" + index).value;
     console.log(text);
-    $scope.todos[index] = text;
+    console.log($scope.todos[index]);
+    $scope.todos[index].name = text;
   //   $scope.todos[index] = $scope.editBar;
   //   $scope.editBar = "";
   // }
@@ -36,8 +36,27 @@ myApp.controller('MainCtrl', function ($scope){
   }
     
   
-});
 
+  $scope.deleteCheckedItems = function(){
+    for(var i = 0; i < $scope.todos.length; i++){
+      if($scope.todos[i].isChecked){
+        $scope.todos.splice(i,1);
+        i--;
+      }
+    }
+
+  }
+
+  $scope.later = function(item){
+    console.log("Task Set to be done later");
+    alert("Task set to be done Later");
+  }
+  $scope.tom = function(item){
+    console.log("Task set to be done Tomorrow");
+    alert("Task set to be done Tomorrow");
+  }
+
+});
 /*************************
  * Homework (not rly):
  * - "enter" button functionality instead of clicking button
@@ -47,5 +66,5 @@ myApp.controller('MainCtrl', function ($scope){
  * - make it prettier
  * - add a due date
  * - add reminder (setInterval)
- * 
+ *
  * *********************/

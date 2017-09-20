@@ -29,20 +29,15 @@
       <ul class="list-group">
         <!-- http://www.w3schools.com/css/css_float.asp -->
         <li class="list-group-item clearfix" ng-repeat="do in todos">
-<<<<<<< HEAD
           
           <input ng-model="do.isChecked" id = "checkBox" name="todolist" type="checkbox" value="ON" >
 
           <span>{{do.name}}</span>
           
-
-=======
-
-          <span>{{do}}</span>
             <input type="button" ng-click = "deleteItem(do)" value="NOW" class="btn btn-success"/>
               <input type="button" ng-click = "later(do)" value="LATER" class="btn btn-success"/>
                 <input type="button" ng-click = "tom(do)" value="TOMORROW" class="btn btn-success"/>
->>>>>>> origin
+
           <button class="btn btn-danger pull-right" type="button" ng-click="deleteItem(do)">
             <span class="glyphicon glyphicon-trash " aria-hidden="true"></span>
           </button>

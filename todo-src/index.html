@@ -30,9 +30,9 @@
         <!-- http://www.w3schools.com/css/css_float.asp -->
         <li class="list-group-item clearfix" ng-repeat="do in todos">
           
-          <input id = "checkBox" type="checkbox">
+          <input ng-model="do.isChecked" id = "checkBox" name="todolist" type="checkbox" value="ON" >
 
-          <span>{{do}}</span>
+          <span>{{do.name}}</span>
           
 
           <button class="btn btn-danger pull-right" type="button" ng-click="deleteItem(do)">
@@ -41,6 +41,7 @@
 
         </li>
       </ul>
+      <button type="button" class="btn btn-success" ng-click="deleteCheckedItems()">Clear Checked Items</button>
     </div>
     
   </body>

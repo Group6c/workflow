@@ -3,13 +3,14 @@
 var myApp = angular.module('app', []);
 
 myApp.controller('MainCtrl', function ($scope){
-  $scope.todos = ["Learn Angular", "Learn node"];
+  $scope.todos = [{name: "Learn Angular", isChecked: false }, {name: "Learn node", isChecked: false }];
   $scope.newItem = "";
-  
+
+
   $scope.addItem = function(){
     console.log("in add");
     if ($scope.newItem !== ""){
-      $scope.todos.push($scope.newItem);
+      $scope.todos.push({name: $scope.newItem, isChecked: false });
       $scope.newItem = "";
     }
   }
@@ -18,6 +19,16 @@ myApp.controller('MainCtrl', function ($scope){
     console.log("in delete");
     var index = $scope.todos.indexOf(item);
     $scope.todos.splice(index, 1);
+  }
+
+  $scope.deleteCheckedItems = function(){
+    for(var i = 0; i < $scope.todos.length; i++){
+      if($scope.todos[i].isChecked){
+        $scope.todos.splice(i,1);
+        i--;
+      }
+    }
+
   }
     
   
